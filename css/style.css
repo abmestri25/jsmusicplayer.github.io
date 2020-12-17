@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Permanent+Marker&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+background: radial-gradient(circle, rgba(251,63,219,1) 0%, rgba(252,179,70,1) 100%);
+}
+
+.container{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center ;
+    color: black;
+}
+
+.music_container{
+    background: rgb(81,63,251);
+background: radial-gradient(circle, rgba(81,63,251,1) 0%, rgba(70,252,219,1) 100%);
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.titles{
+    margin: 10px;
+}
+.titles h2{
+    text-transform: uppercase;
+    font-family: 'Permanent Marker', cursive;
+}
+.titles h3{
+    font-family: 'Dancing Script', cursive;
+}
+.img_container img{
+    margin: 15px;
+    border-radius: 50%;
+    object-fit: cover;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+.music_controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 25px;
+}
+
+.music_controls .fas{
+    font-size: 2rem;
+    cursor: pointer;
+    filter: drop-shadow(0 1.2rem 3rem 0.5rem rgba(0,0,0,0.4));
+}
+
+.music_controls .main_button{
+    display: flex;
+    justify-content: center;
+    background-color: #111;
+    color: #ffff;
+    align-items: center;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+}
+
+.anime {
+    animation: rotatePlayer 10s linear infinite;
+}
+
+@keyframes rotatePlayer{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}

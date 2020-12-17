@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="music_container">
+        <div class="titles">
+          <h2 id="title">Natarang Ubha</h2>
+          <h3 id="artist">Ajay-Atul</h3>
+        </div>
+
+        <div class="img_container">
+          <img
+            src="images/Natarang.jpg"
+            width="200px"
+            height="200px"
+            class=""
+            alt=""
+          />
+        </div>
+        <audio src="audios/Natarang Ubha.mp3"></audio>
+        <div class="music_controls">
+          <i class="fas fa-backward" id="prev" title="previous"></i>
+          <i class="fas fa-play main_button" id="play" title="play"></i>
+
+          <i class="fas fa-forward" id="next" title="forward"></i>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const music = document.querySelector("audio");
+      const img = document.querySelector("img");
+      const title = document.getElementById("title");
+      const artist = document.getElementById("artist");
+      const play = document.getElementById("play");
+      const prev = document.getElementById("prev");
+      const next = document.getElementById("next");
+
+      const songs = [
+        {
+          name: "Natarang",
+          title: "Natarang Ubha",
+          artist: "Ajay-Atul",
+        },
+        {
+          name: "Faded",
+          title: "Faded",
+          artist: "Alan Walker",
+        },
+      ];
+
+      let isPlaying = false;
+
+      //   for play function
+      const playMusic = () => {
+        isPlaying = true;
+        music.play();
+        play.classList.replace("fa-play", "fa-pause");
+        img.classList.add("anime");
+      };
+
+      // for pause function
+      const pauseMusic = () => {
+        isPlaying = false;
+        music.pause();
+        play.classList.replace("fa-pause", "fa-play");
+        img.classList.remove("anime");
+      };
+
+      //   play and pause music
+      play.addEventListener("click", () => {
+        //   if(isPlaying){
+        //       pauseMusic()
+        //   }else{
+        //       playMusic()
+        //   }
+        // using ternary operator
+
+        isPlaying ? pauseMusic() : playMusic();
+      });
+
+      // next and previous music
+
+      const loadSong = (songs) => {
+        title.textContent = songs.title;
+        artist.textContent = songs.artist;
+        img.src = "images/" + songs.name + ".jpg";
+        music.src = "audios/" + songs.name + ".mp3";
+      };
+
+    //   loadSong(songs[1]);
+      let songIndex = 0
+      const prevSong = () => {
+        songIndex = (songIndex - 1) % songs.length
+        loadSong(songs[songIndex])
+        playMusic()
+
+      }
+
+      const nextSong = () => {
+        songIndex = (songIndex + 1) % songs.length
+        loadSong(songs[songIndex])
+        playMusic()
+        }
+      prev.addEventListener('click',prevSong)
+      next.addEventListener('click',nextSong)
+
+    </script>
+  </body>
+</html>
